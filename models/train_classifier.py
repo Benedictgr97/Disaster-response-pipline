@@ -27,6 +27,8 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.base import BaseEstimator,TransformerMixin
 
+import pickle
+
 import xgboost as xgb
 
 import nltk
@@ -50,14 +52,73 @@ def load_data(database_filepath):
     # Only Nulls in originl and this will be dropped as its not usefull in this context 
     df.drop('child_alone',axis = 1,inplace=True)
     df['related'] = df['related'].apply(lambda x: 1 if x > 0 else 0)
-    
+
+    X = df['message']
+    y = df.drop(['id','message','original','genre'],axis = 1)
+
+    category_names = y.columns
+    return X,y,category_names
+
 
 def tokenize(text):
-    pass
+    """
+    Tokenize the disaster response text
+    
+    Arguments: text -> Input text that requires 
+    Output: final_tokens -> tokens from the extracted text
+    """
+
+    #For all url's, replace with a place holder string
+    url_regex = 'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+'
+    url_vals = re.findall(url_regex,text)
+    for url in url_vals:
+        text = text.replace(url, 'urlplacehold')
+
+    # Remove punctuation
+    text = re.sub(r'[^\w\s]', '', text)
+
+    # Extract the word tokens from the provided text
+    tokens = nltk.word_tokenize(text)
+    
+    # Initialize lemmatizer and stemmer
+    lemmatizer = WordNetLemmatizer()
+    stemmer = PorterStemmer()
+    
+    stop_words = set(stopwords.words('english'))
+    final_tokens= [stemmer.stem(lemmatizer.lemmatize(w).lower().strip()) for w in tokens if w.lower() not in stop_words]
+
+    return final_tokens
+
+#This class identifies if the first word of each sentence in a text is a verb or ‘RT’ 
+class StartingVerbExtractor(BaseEstimator, TransformerMixin):
+
+    """
+    Used in Piplines to see if the first word of the sentance is a verb
+    
+    """
+
+    def starting_verb(self, text):
+        sentence_list = nltk.sent_tokenize(text)
+        for sentence in sentence_list:
+            pos_tags = nltk.pos_tag(tokenize(sentence))
+            if pos_tags:  # Check if pos_tags is not empty
+                first_word, first_tag = pos_tags[0]
+                if first_tag in ['VB', 'VBP'] or first_word == 'RT':
+                    return True
+        return False
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X_tagged = pd.Series(X).apply(self.starting_verb)
+        return pd.DataFrame(X_tagged)
 
 
 def build_model():
-    pass
+    """
+    Creates the Pipline 
+    """
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
