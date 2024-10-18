@@ -1,8 +1,24 @@
 import sys
+import pandas as pd
+import numpy as np 
+from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
-    pass
+    """
+    INPUT:
+    messages_filepath - filpath of the csv messages file
+    categories_filepath - filpath of the csv categories file
+
+    OUTPUT:
+    df - merged messages and categories 
+    
+    """
+
+    messages = pd.read_csv(messages_filepath)
+    categories = pd.read_csv(categories_filepath)
+    df = categories.merge(messages,how = 'inner',on = 'id')
+    return df
 
 
 def clean_data(df):
