@@ -117,16 +117,46 @@ class StartingVerbExtractor(BaseEstimator, TransformerMixin):
 
 def build_model():
     """
-    Creates the Pipline 
+    Builds a pipline finction with the starting verb extractor and xgboost as the model 
     """
+
+    pipeline = Pipeline([
+        ('features', FeatureUnion([
+            ('text_pipeline', Pipeline([
+                ('count_vectorizer', CountVectorizer(tokenizer=tokenize)),
+                ('tfidf_transformer', TfidfTransformer())
+            ])),
+            ('starting_verb', StartingVerbExtractor())
+        ])),
+        ('classifier', MultiOutputClassifier(xgb.XGBClassifier()))
+    ])
+
+    return pipeline
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
-    pass
+    """
+    INPUT: 
+    Model - ML model
+    X_test - Test input messages 
+    Y_test - Categories of message
+    Category_names - The names of categories for y_test
+
+    OUTPUT:
+
+    Weighted average of the model to make sure we are classifying the most comman repsonses correctly
+    """
+    report = classification_report(y_test.values, y_predict, target_names=y.columns.values, output_dict=True, zero_division=0)
+
+    weighted_avg = report['weighted avg']
+    print("Weighted Average Metrics:")
+    for metric, value in weighted_avg.items():
+        print(f"{metric.capitalize()}: {value:.2f}")
 
 
 def save_model(model, model_filepath):
-    pass
+    with open('XGB_pipeline.pkl', 'wb') as file:
+        pickle.dump(pipeline_verb_xgb, file)
 
 
 def main():
