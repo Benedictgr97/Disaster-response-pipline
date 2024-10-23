@@ -22,11 +22,50 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
-    pass
+    '''
+    Clean and one hot encodes categories of the input data frame for category predictions
+
+    INPUT:
+    df - dataframe of messages and categories
+
+    OUTPUT: 
+    df - dataframe where output categories have been cleaned up and one hot encoded 
+    '''
+
+
+
+    categories_col = df['categories'].str.split(';',expand = True)
+    row = categories_col.head(1)
+    category_colnames = list(row.apply(lambda x: x.str.split('-').str[0],axis = 1).loc[0])
+    categories_col.columns = category_colnames
+
+    for column in categories_col:
+        # set each value to be the last character of the string
+        categories_col[column] = categories_col[column].apply(lambda x: x.split('-')[1])
+
+        # convert column from string to numeric
+        categories_col[column] =  categories_col[column].astype('int')
+
+    df.drop('categories',axis = 1,inplace = True)
+    df = pd.concat([df,categories_col],axis = 1)
+    df = df.drop_duplicates()
+
+    return df
 
 
 def save_data(df, database_filename):
-    pass  
+
+    """
+    saves dataframe to an sqllite database.
+
+    INPUT:
+    df - the dataframe to be saved.
+    database_filename - The path to the sqllite database
+    """
+    
+    engine = create_engine('sqlite:///Response_db.db')
+    table= database_filename.replace(".db","") + "_table"
+    df.to_sql(table, engine, index=False, if_exists = 'replace' ) 
 
 
 def main():
