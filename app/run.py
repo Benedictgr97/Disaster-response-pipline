@@ -14,6 +14,32 @@ from sqlalchemy import create_engine
 
 app = Flask(__name__)
 
+#This class identifies if the first word of each sentence in a text is a verb or ‘RT’ 
+class StartingVerbExtractor(BaseEstimator, TransformerMixin):
+
+    """
+    Used in Piplines to see if the first word of the sentance is a verb
+    
+    """
+
+    def starting_verb(self, text):
+        sentence_list = nltk.sent_tokenize(text)
+        for sentence in sentence_list:
+            pos_tags = nltk.pos_tag(tokenize(sentence))
+            if pos_tags:  # Check if pos_tags is not empty
+                first_word, first_tag = pos_tags[0]
+                if first_tag in ['VB', 'VBP'] or first_word == 'RT':
+                    return True
+        return False
+
+    def fit(self, X, y=None):
+        return self
+
+    def transform(self, X):
+        X_tagged = pd.Series(X).apply(self.starting_verb)
+        return pd.DataFrame(X_tagged)
+
+
 def tokenize(text):
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
