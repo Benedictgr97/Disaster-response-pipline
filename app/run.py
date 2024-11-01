@@ -92,7 +92,7 @@ def index():
         }
     ]
     
-    # encode plotly graphs in JSON
+    # encode plotly graphs in JSONs
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
     
