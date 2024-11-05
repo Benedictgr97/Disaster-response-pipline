@@ -41,8 +41,8 @@ nltk.download('averaged_perceptron_tagger_eng')
 
 
 def load_data(database_filepath):
-    filepath = "../data/Response_db.db"
-    engine = create_engine('sqlite:///' + filepath)
+    engine = create_engine('sqlite:///' + database_filepath)
+    print('a')
     df = pd.read_sql_table('DISASTER_RESPONSE_TABLE',engine)
 
     # Child alone has 0 for all values so drop 
@@ -156,8 +156,8 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
 
 def save_model(model, model_filepath):
-    with open('XGB_pipeline.pkl', 'wb') as file:
-        pickle.dump(pipeline_verb_xgb, file)
+    with open(model_filepath, 'wb') as file:
+        pickle.dump(model, file)
 
 
 def main():
