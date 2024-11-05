@@ -15,6 +15,7 @@ import pandas as pd
 import numpy as np 
 
 import re
+import sys
 from sqlalchemy import create_engine
 
 from sklearn.pipeline import Pipeline, FeatureUnion
@@ -143,7 +144,10 @@ def evaluate_model(model, X_test, Y_test, category_names):
 
     Weighted average of the model to make sure we are classifying the most comman repsonses correctly
     """
-    report = classification_report(y_test.values, y_predict, target_names=y.columns.values, output_dict=True, zero_division=0)
+
+    Y_predict = model.predict(X_test)
+
+    report = classification_report(Y_test.values, Y_predict, target_names= category_names, output_dict=True, zero_division=0)
 
     weighted_avg = report['weighted avg']
     print("Weighted Average Metrics:")
