@@ -63,7 +63,7 @@ def save_data(df, database_filename):
     database_filename - The path to the sqllite database
     """
     
-    engine = create_engine('sqlite:///Response_db.db')
+    engine = create_engine('sqlite:///response_db.db')
     table= database_filename.replace(".db","") + "_table"
     df.to_sql(table, engine, index=False, if_exists = 'replace' ) 
 

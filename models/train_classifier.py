@@ -29,21 +29,25 @@ import pickle
 
 import xgboost as xgb
 
+import logging
+
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer, PorterStemmer
-nltk.download('punkt')
-nltk.download('wordnet')
-nltk.download('averaged_perceptron_tagger')
-nltk.download('punkt_tab')
-nltk.download('stopwords')
-nltk.download('averaged_perceptron_tagger_eng')
+
+
+# Function to suppress output
+nltk.download('punkt', quiet=True)
+nltk.download('wordnet', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
+nltk.download('punkt_tab', quiet=True)
+nltk.download('stopwords', quiet=True)
+nltk.download('averaged_perceptron_tagger_eng', quiet=True)
 
 
 def load_data(database_filepath):
     engine = create_engine('sqlite:///' + database_filepath)
-    print('a')
-    df = pd.read_sql_table('DISASTER_RESPONSE_TABLE',engine)
+    df = pd.read_sql_table('Response_db_table',engine)
 
     # Child alone has 0 for all values so drop 
     # Realted has a max of 2, most likley a fluke for a binary input 
@@ -121,7 +125,7 @@ def build_model():
     pipeline = Pipeline([
         ('features', FeatureUnion([
             ('text_pipeline', Pipeline([
-                ('count_vectorizer', CountVectorizer(tokenizer=tokenize)),
+                ('count_vectorizer', CountVectorizer(tokenizer=tokenize,token_pattern=None)),
                 ('tfidf_transformer', TfidfTransformer())
             ])),
             ('starting_verb', StartingVerbExtractor())
@@ -153,6 +157,8 @@ def evaluate_model(model, X_test, Y_test, category_names):
     print("Weighted Average Metrics:")
     for metric, value in weighted_avg.items():
         print(f"{metric.capitalize()}: {value:.2f}")
+
+    print(classification_report(Y_test.values, Y_predict, target_names=category_names))
 
 
 def save_model(model, model_filepath):

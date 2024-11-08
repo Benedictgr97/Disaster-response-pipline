@@ -4,12 +4,15 @@ import pandas as pd
 
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
+import nltk
 
+import pickle # Joblib is failing to pull out tokenize
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
-from sklearn.externals import joblib
 from sqlalchemy import create_engine
+
+from sklearn.base import BaseEstimator,TransformerMixin
 
 
 app = Flask(__name__)
@@ -52,11 +55,13 @@ def tokenize(text):
     return clean_tokens
 
 # load data
-engine = create_engine('sqlite:///../data/YourDatabaseName.db')
-df = pd.read_sql_table('YourTableName', engine)
+database_filepath = "../data/response_db.db"
+engine = create_engine('sqlite:///' + database_filepath)
+df = pd.read_sql_table('Response_db_table', engine)
 
 # load model
-model = joblib.load("../models/your_model_name.pkl")
+with open("../models/XGB_pipeline.pkl", "rb") as file:
+    model = pickle.load(file)
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -109,6 +114,8 @@ def go():
     # use model to predict classification for query
     classification_labels = model.predict([query])[0]
     classification_results = dict(zip(df.columns[4:], classification_labels))
+
+    print(classification_results)
 
     # This will render the go.html Please see that file. 
     return render_template(
