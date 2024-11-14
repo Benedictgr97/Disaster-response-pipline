@@ -9,7 +9,8 @@ import nltk
 import pickle # Joblib is failing to pull out tokenize
 from flask import Flask
 from flask import render_template, request, jsonify
-from plotly.graph_objs import Bar
+from plotly.graph_objs import Bar,Pie
+import plotly.express as px
 from sqlalchemy import create_engine
 
 from sklearn.base import BaseEstimator,TransformerMixin
@@ -63,45 +64,33 @@ df = pd.read_sql_table('Response_db_table', engine)
 with open("../models/XGB_pipeline.pkl", "rb") as file:
     model = pickle.load(file)
 
-
-# index webpage displays cool visuals and receives user input text for model
 @app.route('/')
 @app.route('/index')
 def index():
-    
-    # extract data needed for visuals
-    # TODO: Below is an example - modify to extract data for your own visuals
+    # Extract data needed for visuals
     genre_counts = df.groupby('genre').count()['message']
     genre_names = list(genre_counts.index)
-    
-    # create visuals
-    # TODO: Below is an example - modify to create your own visuals
+
+    # Create visuals
     graphs = [
         {
             'data': [
-                Bar(
-                    x=genre_names,
-                    y=genre_counts
+                Pie(
+                    labels=genre_names,
+                    values=genre_counts
                 )
             ],
-
             'layout': {
-                'title': 'Distribution of Message Genres',
-                'yaxis': {
-                    'title': "Count"
-                },
-                'xaxis': {
-                    'title': "Genre"
-                }
+                'title': 'Distribution of Message Genres'
             }
         }
     ]
-    
-    # encode plotly graphs in JSON
+
+    # Encode plotly graphs in JSON
     ids = ["graph-{}".format(i) for i, _ in enumerate(graphs)]
     graphJSON = json.dumps(graphs, cls=plotly.utils.PlotlyJSONEncoder)
-    
-    # render web page with plotly graphs
+
+    # Render web page with plotly graphs
     return render_template('master.html', ids=ids, graphJSON=graphJSON)
 
 
