@@ -1,5 +1,24 @@
 # Disaster Response Pipeline Project
 
+### Description:
+A pipline that ingests disaster response messages and, transforms the message and runs it through a 'bag of words' NLP model approach to classify these messages to a given type of disaster.
+
+### Installation and requirements:
+Python version : 3.12.4
+
+$ git clone https://github.com/Swatichanchal/Disaster-Response-Pipeline.git
+In addition This will require pip installation of the following:
+
+$ pip install SQLAlchemy
+$ pip install nltk
+Python 3+
+ML Libraries: NumPy, Pandas, SciPy, SkLearn
+NLP Libraries: NLTK
+SQLlite Libraries: SQLalchemy
+Model Loading and Saving Library: Pickle
+Web App and Visualization: Flask, Plotly
+The code can be viewed and modified with Jupyter Notebooks.
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
@@ -12,3 +31,5 @@
     `python run.py`
 
 3. Go to http://0.0.0.0:3001/
+
+
