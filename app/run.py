@@ -67,21 +67,47 @@ with open("../models/XGB_pipeline.pkl", "rb") as file:
 @app.route('/')
 @app.route('/index')
 def index():
-    # Extract data needed for visuals
+    # Extract breakdown of genre
     genre_counts = df.groupby('genre').count()['message']
-    genre_names = list(genre_counts.index)
+    category_names = df.iloc[:, 4:].columns
+    category_total = (df.iloc[:, 4:] != 0).sum().values
+
+    # Sort the data
+    sorted_genre_counts = genre_counts.sort_values(ascending=False)
+    sorted_genre_names = list(sorted_genre_counts.index)
+
+    sorted_category_indices = category_total.argsort()[::-1]
+    sorted_category_total = category_total[sorted_category_indices]
+    sorted_category_names = category_names[sorted_catsegory_indices]
 
     # Create visuals
     graphs = [
         {
             'data': [
                 Pie(
-                    labels=genre_names,
-                    values=genre_counts
+                    labels=sorted_genre_names,
+                    values=sorted_genre_counts
                 )
             ],
             'layout': {
-                'title': 'Distribution of Message Genres'
+                'title': 'Breakdown of categories of received messages'
+            }
+        },
+        {
+            'data': [
+                Bar(
+                    x=sorted_category_names,
+                    y=sorted_category_total
+                )
+            ],
+            'layout': {
+                'title': 'Distribution of Message Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Category"
+                }
             }
         }
     ]

@@ -35,7 +35,7 @@ def clean_data(df):
 
 
     categories_col = df['categories'].str.split(';',expand = True)
-    row = categories_col.head(1)
+    row = categories_col.head(1)s
     category_colnames = list(row.apply(lambda x: x.str.split('-').str[0],axis = 1).loc[0])
     categories_col.columns = category_colnames
 
