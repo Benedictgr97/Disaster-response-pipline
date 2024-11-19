@@ -8,7 +8,9 @@ Python version : 3.12.4
 
 To gain the access the required packages, run the command below whilst in the same location as the requierments.txt folder:
 
-```bash pip install -r requirements.txt ```
+```
+bash pip install -r requirements.txt
+```
 
 Run the below command to clone the repository:
 
