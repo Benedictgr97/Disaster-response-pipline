@@ -6,6 +6,10 @@ A pipline that ingests disaster response messages and, transforms the message an
 ### Installation and requirements:
 Python version : 3.12.4
 
+To gain the access the required packages, run the command below whilst in the same location as the requierments.txt folder:
+
+```bash pip install -r requirements.txt ```
+
 $ git clone https://github.com/Swatichanchal/Disaster-Response-Pipeline.git
 In addition This will require pip installation of the following:
 
