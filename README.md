@@ -18,18 +18,6 @@ Run the below command to clone the repository:
 bash git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 ``` 
 
-In addition This will require pip installation of the following:
-
-$ pip install SQLAlchemy
-$ pip install nltk
-Python 3+
-ML Libraries: NumPy, Pandas, SciPy, SkLearn
-NLP Libraries: NLTK
-SQLlite Libraries: SQLalchemy
-Model Loading and Saving Library: Pickle
-Web App and Visualization: Flask, Plotly
-The code can be viewed and modified with Jupyter Notebooks.
-
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
