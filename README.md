@@ -12,7 +12,7 @@ To gain the access the required packages, run the command below whilst in the sa
 
 Run the below command to clone the repository:
 
-``` git clone https://github.com/Benedictgr97/Disaster-response-pipline.git ```
+```markdown ```bash git clone https://github.com/Benedictgr97/Disaster-response-pipline.git ``` ```
 
 In addition This will require pip installation of the following:
 
