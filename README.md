@@ -3,6 +3,12 @@
 ### Description:
 A pipline that ingests disaster response messages and, transforms the message and runs it through a 'bag of words' NLP model approach to classify these messages to a given type of disaster.
 
+There are 3 main sections of this script, 2 are for set up and the final one is for running the model predictions alongisde displaying the layout of the data.
+
+    - process_data.py: ETL on the input data, storing it in a temporary sqllite database ready for the model
+    - train_classifier.py: Used to train and evaulte the model from the transformed data ready for future predictions
+    - run.py: Dispalys the layout of the training data in a web app and allows the user to predict the disaster category of a new response
+
 ### Installation and requirements:
 Python version : 3.12.4
 
