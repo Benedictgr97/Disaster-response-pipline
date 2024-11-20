@@ -5,9 +5,9 @@ A pipline that ingests disaster response messages and, transforms the message an
 
 There are three main sections of this script, the first two are for set up and the final one is for running the model predictions alongisde displaying the layout of the data.
 
-1. process_data.py: ETL on the input data, storing it in a temporary sqllite database ready for the model
-2. train_classifier.py: Used to train and evaulte the model from the transformed data ready for future predictions
-3. run.py: Dispalys the layout of the training data in a web app and allows the user to predict the disaster category of a new response
+1. **Process_Data.py**: ETL on the input data, storing it in a temporary SQLite database ready for the model.
+2. **Train_Classifier.py**: Used to train and evaluate the model from the transformed data ready for future predictions.
+3. **Run.py**: Displays the layout of the training data in a web app and allows the user to predict the disaster category of a new response.
 
 ### Installation and requirements:
 Python version : 3.12.4
