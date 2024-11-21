@@ -39,4 +39,19 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 
 ### Additional files:
 
+**Folder** - _app_
+run.py - python script to launch web application.
+Folder: templates - web dependency files (go.html & master.html) required to run the web application.
+
+**Folder** - _data_
+disaster_messages.csv - real messages sent during disaster events (provided by Figure Eight)
+disaster_categories.csv - categories of the messages
+process_data.py - ETL pipeline used to load, clean, extract feature and store data in SQLite database
+ETL Pipeline Preparation.ipynb - Jupyter Notebook used to prepare ETL pipeline
+DisasterResponse.db - cleaned data stored in SQlite database
+
+**Folder** - _models_
+train_classifier.py - ML pipeline used to load cleaned data, train model and save trained model as pickle (.pkl) file for later use
+classifier.pkl - pickle file contains trained model
+ML Pipeline Preparation.ipynb - Jupyter Notebook used to prepare ML pipeline
 
