@@ -41,7 +41,7 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 
 **Folder** - _app_
 - **run.py** - Described above
-- **Folder** -  _templates_ -HTML templates for the web application. 
+- **Folder** -  _templates_ - HTML templates for the web application. 
 
 **Folder** - _data_
 - **ETL Pipeline Preparation.ipynb** - Experimentation to build out the process_data.py pipline with methodology included 
