@@ -40,8 +40,8 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 ### Additional files:
 
 **Folder** - _app_
-run.py - python script to launch web application.
-Folder: templates - web dependency files (go.html & master.html) required to run the web application.
+- **run.py** - Described above
+- **Folder** -  _templates_ - web dependency files (go.html & master.html) required to run the web application.
 
 **Folder** - _data_
 disaster_messages.csv - real messages sent during disaster events (provided by Figure Eight)
