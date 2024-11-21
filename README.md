@@ -56,7 +56,7 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 - **train_classifier.py** -  Described above
 
 ## Acknowledgements
-- [Udacity](https://www.udacity.com/): Providing the templates, outline and training for this course.
+- [Udacity](https://www.udacity.com/) : Providing the templates, outline and training for this course.
 - Figure Eight: Providing the disaster response data.
 
 
