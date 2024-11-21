@@ -51,7 +51,9 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 - **process_data.py** - Described above
 
 **Folder** - _models_
-- **train_classifier.py** - ML pipeline used to load cleaned data, train model and save trained model as pickle (.pkl) file for later use
-- **classifier.pkl** - pickle file contains trained model
-- **ML Pipeline Preparation.ipynb** - Jupyter Notebook used to prepare ML pipeline
+- **ML Pipeline Preparation.ipynb** - Experimentation to build out the train_classifier.py model with methodology included 
+- **XGB_pipeline.pkl** - Pickle file of XGB boost trained model
+- **train_classifier.py** -  Described above
+
+
 
