@@ -57,7 +57,8 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 
 ## Acknowledgements
 - [Udacity](https://www.udacity.com/) : Providing the templates, outline and training for this course.
-- Figure Eight: Providing the disaster response data.
+- [Figure Eight](https://www.appen.com/): Providing the disaster response data.
+
 
 
 
