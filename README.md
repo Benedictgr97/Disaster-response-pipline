@@ -1,6 +1,6 @@
 # Disaster Response Pipeline Project
 
-### Description:
+## Description:
 A pipline that ingests disaster response messages and, transforms the message and runs it through a 'bag of words' NLP model approach to classify these messages to a given type of disaster.
 
 There are three main sections of this script, the first two are for set up and the final one is for running the model predictions alongisde displaying the layout of the data.
@@ -9,7 +9,7 @@ There are three main sections of this script, the first two are for set up and t
 2. **Train_Classifier.py**: Used to train and evaluate the model from the transformed data ready for future predictions.
 3. **Run.py**: Displays the layout of the training data in a web app and allows the user to predict the disaster category of a new response.
 
-### Installation and requirements:
+## Installation and requirements:
 Python version : 3.12.4
 
 To gain the access the required packages, run the command below whilst in the same location as the requierments.txt folder:
@@ -24,7 +24,7 @@ Run the below command to clone the repository:
 git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 ``` 
 
-### Instructions:
+## Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
@@ -37,7 +37,7 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 
 3. Go to http://0.0.0.0:3001/
 
-### Additional files:
+## Additional files:
 
 **Folder** - _app_
 - **run.py** - Described above
