@@ -55,5 +55,9 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 - **XGB_pipeline.pkl** - Pickle file of XGB boost trained model
 - **train_classifier.py** -  Described above
 
+## Acknowledgements
+- [Udacity](https://www.udacity.com/): Providing the templates, outline and training for this course.
+- Figure Eight: Providing the disaster response data.
+
 
 
