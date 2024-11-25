@@ -55,7 +55,9 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 - **XGB_pipeline.pkl** - Pickle file of XGB boost trained model
 - **train_classifier.py** -  Described above
 
-## **Example**: _Running the model_
+## **Example**: _Training the model_
+2. Run the ML pilone that trains the classifier
+![image](https://github.com/user-attachments/assets/04ac348e-5c45-49cc-87ac-25745e74ae63)
 
 
 ## Acknowledgements
