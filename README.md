@@ -1,5 +1,14 @@
 # Disaster Response Pipeline Project
 
+## Table of Contents
+1. [Description](#description)
+2. [Installation and requirements](#installation_and_requirements)
+3. [Instructions](#instructions)
+4. [Additional files](#additional_files)
+5. [Example](#example)
+6. [Acknowledgements](#acknowledgements)
+
+<a name="descripton"></a>
 ## Description:
 A pipline that ingests disaster response messages and, transforms the message and runs it through a 'bag of words' NLP model approach to classify these messages to a given type of disaster.
 
@@ -9,6 +18,7 @@ There are three main sections of this script, the first two are for set up and t
 2. **Train_Classifier.py**: Used to train and evaluate the model from the transformed data ready for future predictions.
 3. **Run.py**: Displays the layout of the training data in a web app and allows the user to predict the disaster category of a new response.
 
+<a name="installation_and_requirements"></a>
 ## Installation and requirements:
 Python version : 3.12.4
 
@@ -23,7 +33,7 @@ Run the below command to clone the repository:
 ```
 git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 ``` 
-
+<a name="instructions"></a>
 ## Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
@@ -37,6 +47,7 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 
 3. Go to http://0.0.0.0:3001/
 
+<a name="additional_files"></a>
 ## Additional files:
 
 **Folder** - _app_
@@ -55,6 +66,7 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 - **XGB_pipeline.pkl** - Pickle file of XGB boost trained model
 - **train_classifier.py** -  Described above
 
+<a name="example"></a>
 ## **Example**: _Running each part_
 1. Run the ETL pipline, if you have new data to train on, update the data/disaster_messages.csv data/disaster_categories.csv
 
@@ -73,8 +85,7 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 
 ![image](https://github.com/user-attachments/assets/6d0ebe61-2015-4fa5-8d2f-a81dfd88613a)
 
-
-
+<a name="acknowledgements"></a>
 ## Acknowledgements
 - [Udacity](https://www.udacity.com/) : Providing the templates, outline and training for this course.
 - [Figure Eight](https://www.appen.com/): Providing the disaster response data.
