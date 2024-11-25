@@ -78,7 +78,7 @@ def index():
 
     sorted_category_indices = category_total.argsort()[::-1]
     sorted_category_total = category_total[sorted_category_indices]
-    sorted_category_names = category_names[sorted_catsegory_indices]
+    sorted_category_names = category_names[sorted_category_indices]
 
     # Create visuals
     graphs = [
