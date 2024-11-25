@@ -59,6 +59,7 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 1. Run the ETL pipline, if you have new data to train on, update the data/disaster_messages.csv data/disaster_categories.csv
 
 ![image](https://github.com/user-attachments/assets/2f92fce7-1c7a-4c8b-b975-18d0c05482a1)
+
 2. Run the ML pilone that trains the classifier
    
 ![image](https://github.com/user-attachments/assets/04ac348e-5c45-49cc-87ac-25745e74ae63)
