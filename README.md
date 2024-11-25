@@ -69,6 +69,11 @@ git clone https://github.com/Benedictgr97/Disaster-response-pipline.git
 
 ![image](https://github.com/user-attachments/assets/b80f1f40-7e78-4b18-a820-acbca38146a9)
 
+4.Finally, entering a disaster response message to clarify will give the below
+
+![image](https://github.com/user-attachments/assets/6d0ebe61-2015-4fa5-8d2f-a81dfd88613a)
+
+
 
 ## Acknowledgements
 - [Udacity](https://www.udacity.com/) : Providing the templates, outline and training for this course.
